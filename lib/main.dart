@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
             return GlobalState();
           }));
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.arrow_forward_rounded),
       ),
     );
   }
