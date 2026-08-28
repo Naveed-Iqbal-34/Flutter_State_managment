@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import 'package:state_management/counter_provider.dart';
+import 'package:state_management/global_state.dart';
 
 void main() {
-  runApp(App());
+  runApp(ChangeNotifierProvider(
+    create: (context)=>CounterProvider(),
+      child: App()));
 }
 
 class App extends StatelessWidget {
@@ -13,10 +16,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'State Management',
-      home: ChangeNotifierProvider(
-        create: (context) => CounterProvider(),
-        child: HomePage(),
-      ),
+      home: HomePage(),
     );
   }
 }
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
               children: [
                 TextSpan(text: 'You pressed the Button\n'),
                 TextSpan(
-                  text: '${Provider.of<CounterProvider>(ctx).getCount()}',
+                  text: '${ctx.watch<CounterProvider>().getCount()}',
                   style: TextStyle(
                     color: Colors.orange,
                     fontSize: 50,
@@ -59,7 +59,9 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Provider.of<CounterProvider>(context, listen: false).incrementCount();
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return GlobalState();
+          }));
         },
         child: Icon(Icons.add),
       ),
