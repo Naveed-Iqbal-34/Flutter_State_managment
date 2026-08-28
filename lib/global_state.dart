@@ -9,12 +9,20 @@ class GlobalState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('State management')),
-      body: ElevatedButton(
-        onPressed: () {
-          context.read<CounterProvider>().incrementCount();
-        },
-        child: Icon(Icons.add),
+      appBar: AppBar(title: Text('State management'),
+      backgroundColor: Colors.orange,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.orange,
+            foregroundColor: Colors.white
+          ),
+          onPressed: () {
+            context.read<CounterProvider>().incrementCount();
+          },
+          child: Icon(Icons.add, size: 30,),
+        ),
       ),
     );
   }
