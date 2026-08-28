@@ -26,7 +26,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('build context called');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
@@ -35,7 +34,6 @@ class HomePage extends StatelessWidget {
 
       body: Center(
         child: Consumer(builder: (ctx,_,__){
-          print('Consumer context called');
           return RichText(
             text: TextSpan(
               style: TextStyle(
